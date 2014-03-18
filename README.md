@@ -8,4 +8,4 @@ TODO
 ====
 - Make simple webpage with twitch video
 - Button for change video
-- Bootstrap page
+- ~~Bootstrap page~~
