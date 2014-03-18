@@ -33,7 +33,7 @@
 				<param name="allowScriptAccess" value="always" />
 				<param name="allowNetworking" value="all" />
 				<param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" />
-				<param name="flashvars" value="{{ video }}" /> 	<!-- interpolated here -->
+				<param id="video-data" name="flashvars" value="{{ video }}" /> 	<!-- interpolated here -->
 			</object>
 
 			<input type="button" value="Next" class="btn btn-success center-block next-button" onclick="next()"/>
@@ -43,7 +43,10 @@
 	<script type='text/javascript'>
 		function next(){
 			$.getJSON("/next/", function(results){
-				alert("Successful?: " + results['success']);
+				var video = $('#video-data')
+				video.attr('value', results['embed']);
+				// strangely have to do this to reload
+				$( "object").attr('data',  "http://www.twitch.tv/widgets/live_embed_player.swf?channel=liquidwifi").hide().show(); 
 			});
 		}
 	</script>
