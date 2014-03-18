@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from bs4 import BeautifulSoup
 import urllib2
 import json
@@ -19,4 +20,7 @@ def index(request):
 	}
 	return render(request, 'tweek/index.html', context)
 
-	
+def next(request):
+	results = {'success':'False'}
+	jason = json.dumps(results)
+	return HttpResponse(jason, content_type='application/json')

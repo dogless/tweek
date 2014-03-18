@@ -36,8 +36,16 @@
 				<param name="flashvars" value="{{ video }}" /> 	<!-- interpolated here -->
 			</object>
 
-			<input type="button" value="Next" class="btn btn-success center-block next-button"/>
+			<input type="button" value="Next" class="btn btn-success center-block next-button" onclick="next()"/>
 		</div>
 	</body>
+	<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+	<script type='text/javascript'>
+		function next(){
+			$.getJSON("/next/", function(results){
+				alert("Successful?: " + results['success']);
+			});
+		}
+	</script>
 </html>
 
