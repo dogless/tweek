@@ -6,6 +6,9 @@ A twitch application for trending videos
 
 TODO
 ====
-- Make simple webpage with twitch video
-- Button for change video
+- ~~Make simple webpage with twitch video~~
+- ~~Button for change video~~
 - ~~Bootstrap page~~
+- Implement full next button
+- Fix channel attribute
+- Add voice recog. in place of button
