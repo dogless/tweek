@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from bs4 import BeautifulSoup
 import urllib2
 import json
 
@@ -10,11 +10,12 @@ def index(request):
 	req.add_header('Accept', 'application/vnd.twitchtv.v2+json')
 	opener = urllib2.build_opener()
 	f = opener.open(req)
-	object = json.load(f)
-	thing = object.get("videos")[0]
-	embed = thing.get('embed')
+	jsonObject = json.load(f)
+	video = jsonObject.get("videos")[0]
+	soup = BeautifulSoup(video.get('embed', None))
+	embedData = soup.find('param', attrs = {'name' : 'flashvars'})['value']
 	context = {
-			'video' : embed
+			'video' : embedData
 	}
 	return render(request, 'tweek/index.html', context)
 
